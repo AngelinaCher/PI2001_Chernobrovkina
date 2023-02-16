@@ -2,7 +2,7 @@
 
 Данный репозиторий используется в учебных целях. 
 
-![photo](C:\Users\chern\StudioProjects\PI2001_Chernobrovkina\ezh.jpg)
+![photo](https://github.com/AngelinaCher/PI2001_Chernobrovkina/blob/main/ezh.jpg)
 
 Выполненные лабораторные:
 
