@@ -37,6 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _reset() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,41 +52,54 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-          child: Container(
-            child: Column(
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text(
-                  'Значение инкремента:',
-                  style: TextStyle(fontSize: 23),
+                Container (
+                  child: const Text(
+                    'Значение инкремента:',
+                    style: TextStyle(fontSize: 23),
+                  ),
                 ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                Container(
+                  child: Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
                 ),
-                // Добавить сюда кнопки
-              ],
-            ),
-          ),
-        ),
-        floatingActionButton:
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: _decrementCounter,
-                    child: const Icon(Icons.minimize_rounded),
-                    style: ButtonStyle (
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red)
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _decrementCounter,
+                        child: const Icon(Icons.minimize_rounded),
+                        style: ButtonStyle (
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red)
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: _incrementCounter,
+                        child: const Icon(Icons.add),
+                        style: ButtonStyle (
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  child: TextButton(
+                    onPressed: _reset,
+                    child: const Text('Сбросить'),
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black38)
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: _incrementCounter,
-                    child: const Icon(Icons.add),
-                    style: ButtonStyle (
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
-                    ),
-                  )])
+                )
+              ],
+            ),
+        ),
     );
   }
 }
