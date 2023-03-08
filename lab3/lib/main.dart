@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyanAccent),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Инкремент'),
+    return const MaterialApp(
+      home: MyHomePage(title: 'Инкремент'),
     );
   }
 }
@@ -35,45 +27,59 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-
       _counter++;
     });
   }
 
   void _decrementCounter() {
     setState(() {
-
       _counter--;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Значение инкремента:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        appBar: AppBar(
+          backgroundColor: Colors.cyan,
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+        body: Center(
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Значение инкремента:',
+                  style: TextStyle(fontSize: 23),
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                // Добавить сюда кнопки
+              ],
+            ),
+          ),
+        ),
+        floatingActionButton:
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _decrementCounter,
+                    child: const Icon(Icons.minimize_rounded),
+                    style: ButtonStyle (
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.red)
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: _incrementCounter,
+                    child: const Icon(Icons.add),
+                    style: ButtonStyle (
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.green)
+                    ),
+                  )])
     );
   }
 }
